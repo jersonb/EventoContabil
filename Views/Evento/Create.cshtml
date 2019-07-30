@@ -1,0 +1,37 @@
+
+@{
+    ViewData["Title"] = "Importar";
+}
+
+<<br /><br />
+<h1>Upload de Nota Fiscal</h1>
+<br />
+<form method="post" enctype="multipart/form-data" asp-controller="EventoController" asp-action="Create">
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <div class="custom-file col-md-6">
+                <input type="file" class="custom-file-input" name="upload"  accept=".xlsx" id="customFile">
+                <label class="custom-file-label" for="customFile">
+                    Selecione um arquivo xlsx referente ao movimento de um ou mais meses
+                </label>
+            </div>
+            <br /><br /><br />
+            <div class="form-group col-md-2">
+                <input type="submit" value="Upload" class="btn btn-primary" >
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+
+<br> <br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
